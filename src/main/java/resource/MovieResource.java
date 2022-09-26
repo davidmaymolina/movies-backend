@@ -108,6 +108,7 @@ public class MovieResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/post")
     @Transactional
     public Response createMovie(Movie newMovie){
         movieRepository.persist(newMovie);
@@ -132,8 +133,12 @@ public class MovieResource {
         movie.setTitle(updateMovie.getTitle());
         movie.setAuthor(updateMovie.getAuthor());
         movieRepository.persist(movie);
+        //  movieRepository.update(movie.toString(),updateMovie );
+
         return Response.ok(movie).build();
     }
+
+
 
 
 }
